@@ -25,14 +25,14 @@ export class BookListComponent implements OnInit {
   }
 
   deleteBook(id: any) {
-    if (confirm("Really want delete?")) {
+
       this.bookService.delete(id).subscribe(() => {
         this.ngOnInit()
         // @ts-ignore
         document.getElementById("alo").innerHTML = "Delete successful!"
         this.bookService.notify2()
       })
-    }
+
   }
 
   countAllBook() {
