@@ -5,6 +5,9 @@ import {BookCreateComponent} from "./book-create/book-create.component";
 import {BookEditComponent} from "./book-edit/book-edit.component";
 
 const routes: Routes = [
+
+  {path: '', pathMatch: 'full', redirectTo: '/list'},
+
   {
     path: 'list', component: BookListComponent
   },
