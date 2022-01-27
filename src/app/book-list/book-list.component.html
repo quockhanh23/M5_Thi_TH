@@ -12,6 +12,7 @@
       <th>Title</th>
       <th>Author</th>
       <th>Description</th>
+      <th>Detail</th>
       <th>Edit</th>
       <th>Delete</th>
     </tr>
@@ -20,6 +21,7 @@
       <td>{{pe.title}}</td>
       <td>{{pe.author}}</td>
       <td>{{pe.description}}</td>
+      <td><a [routerLink]="['/detail', pe.id]">Detail</a></td>
       <td>
         <button class="btn-warning btn"><a style="text-decoration: none" [routerLink]="['/edit', pe.id]">Edit</a>
         </button>

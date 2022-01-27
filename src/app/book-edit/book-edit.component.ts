@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Book} from "../models/book";
 import {ActivatedRoute, Router} from "@angular/router";
 import {BookService} from "../services/book.service";
@@ -12,10 +12,10 @@ import {BookService} from "../services/book.service";
 export class BookEditComponent implements OnInit {
   book!: Book
   bookForm: FormGroup = new FormGroup({
-    id: new FormControl(''),
-    title: new FormControl(''),
-    author: new FormControl(''),
-    description: new FormControl(''),
+    id: new FormControl('',[Validators.required]),
+    title: new FormControl('',[Validators.required]),
+    author: new FormControl('',[Validators.required]),
+    description: new FormControl('',[Validators.required]),
   });
 
   constructor(private router: Router,
