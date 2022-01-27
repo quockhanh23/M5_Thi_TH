@@ -1,0 +1,30 @@
+<h2 style="color: #0a70b9">Edit book</h2>
+<form [formGroup]="bookForm" (ngSubmit)="updateBook()">
+  <table>
+    <tr>
+      <td>ID:</td>
+      <td><input type="hidden" formControlName="id"></td>
+    </tr>
+    <tr>
+      <td>Title:</td>
+      <td><input type="text" formControlName="title"></td>
+    </tr>
+    <tr>
+      <td>Author:</td>
+      <td><input type="text" formControlName="author"></td>
+    </tr>
+    <tr>
+      <td>Description:</td>
+      <td><input type="text" formControlName="description"></td>
+    </tr>
+  </table>
+  <div class="row">
+    <div class="col-6">
+      <button style="color: #0a70b9" class="btn-warning btn">Edit</button>
+    </div>
+    <div class="col-6">
+      <button (click)="deleteBook1(bookForm.value.id)" style="color: #0a70b9" class="btn-warning btn">Delete</button>
+    </div>
+  </div>
+</form>
+

@@ -1,0 +1,34 @@
+<div class="row">
+  <div class="col-6">
+    <h2 style="color: #0a70b9">List book</h2>
+  </div>
+  <div class="col-6">
+    <h2 style="color: purple" id="alo"></h2>
+  </div>
+
+  <table style="color: purple" border="1px" width="100%">
+    <tr>
+      <th>Number</th>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Description</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+    <tr *ngFor="let pe of book index as i">
+      <td>{{i + 1}}</td>
+      <td>{{pe.title}}</td>
+      <td>{{pe.author}}</td>
+      <td>{{pe.description}}</td>
+      <td>
+        <button class="btn-warning btn"><a style="text-decoration: none" [routerLink]="['/edit', pe.id]">Edit</a>
+        </button>
+      </td>
+      <td>
+        <button class="btn-warning btn"><a (click)="deleteBook(pe.id)">Delete</a></button>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
