@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Book} from "../models/book";
 import {BookService} from "../services/book.service";
 import {Router} from "@angular/router";
@@ -10,8 +10,10 @@ import {Router} from "@angular/router";
 })
 export class BookListComponent implements OnInit {
   book!: Book[]
+
   constructor(private bookService: BookService,
-              private router: Router,) { }
+              private router: Router,) {
+  }
 
   ngOnInit(): void {
     this.bookService.getAll().subscribe(result => {
@@ -21,6 +23,7 @@ export class BookListComponent implements OnInit {
       console.log(error)
     })
   }
+
   deleteBook(id: any) {
     if (confirm("Really want delete?")) {
       this.bookService.delete(id).subscribe(() => {
@@ -30,5 +33,16 @@ export class BookListComponent implements OnInit {
         this.bookService.notify2()
       })
     }
+  }
+
+  countAllBook() {
+    let count = 0
+    for (let i = 0; i < this.book.length; i++) {
+      count = this.book.length
+      console.log(count)
+      // @ts-ignore
+      document.getElementById('alo2').innerHTML = "Total: " + count
+    }
+    return count
   }
 }
