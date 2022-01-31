@@ -12,10 +12,10 @@ import {BookService} from "../services/book.service";
 export class BookEditComponent implements OnInit {
   book!: Book
   bookForm: FormGroup = new FormGroup({
-    id: new FormControl('',[Validators.required]),
-    title: new FormControl('',[Validators.required]),
-    author: new FormControl('',[Validators.required]),
-    description: new FormControl('',[Validators.required]),
+    id: new FormControl('', [Validators.required]),
+    title: new FormControl('', [Validators.required]),
+    author: new FormControl('', [Validators.required]),
+    description: new FormControl('', [Validators.required]),
   });
 
   constructor(private router: Router,
@@ -61,12 +61,13 @@ export class BookEditComponent implements OnInit {
 
   deleteBook1(id: any) {
     this.bookService.delete(id).subscribe(() => {
-      this.router.navigate(["/list"]);
+      this.router.navigate(["/list"]).then(r => {
+        console.log(r);
+      });
       // @ts-ignore
-      this.bookService.notify1()
-      this.bookService.notify2()
-
+      this.bookService.notify2(this.bookService.notify3( this.bookService.notify1()))
+    }, error => {
+      console.log("Lỗi", error)
     })
-
   }
 }

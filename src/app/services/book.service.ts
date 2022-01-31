@@ -1,14 +1,18 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Book} from "../models/book";
-import {Observable} from "rxjs";
+import {Observable, timeout} from "rxjs";
+
 const API_URL = 'http://localhost:3000/books'
+
 @Injectable({
   providedIn: 'root'
 })
 export class BookService {
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {
+  }
+
   // @ts-ignore
   getAll(): Observable<Book[]> {
     return this.httpClient.get<Book[]>(API_URL)
@@ -29,6 +33,7 @@ export class BookService {
   delete(id: any): Observable<Book> {
     return this.httpClient.delete<Book>(API_URL + `/${id}`)
   }
+
   notify1() {
     setTimeout(() => {
       // @ts-ignore
@@ -40,6 +45,13 @@ export class BookService {
     setTimeout(() => {
       // @ts-ignore
       document.getElementById("alo").innerHTML = " "
+    }, 4000)
+  }
+
+  notify3() {
+    setTimeout(() => {
+      // @ts-ignore
+      document.getElementById("alo").innerHTML = "HAHAHA"
     }, 2000)
   }
 }
