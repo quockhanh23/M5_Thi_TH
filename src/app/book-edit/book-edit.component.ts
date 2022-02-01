@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Book} from "../models/book";
 import {ActivatedRoute, Router} from "@angular/router";
 import {BookService} from "../services/book.service";
+import {DialogService} from "../services/dialog.service";
 
 @Component({
   selector: 'app-book-edit',
@@ -10,6 +11,7 @@ import {BookService} from "../services/book.service";
   styleUrls: ['./book-edit.component.css']
 })
 export class BookEditComponent implements OnInit {
+  @Input()
   book!: Book
   bookForm: FormGroup = new FormGroup({
     id: new FormControl('', [Validators.required]),
@@ -21,10 +23,12 @@ export class BookEditComponent implements OnInit {
   constructor(private router: Router,
               private fb: FormBuilder,
               private activatedRoute: ActivatedRoute,
-              private bookService: BookService,) {
+              private bookService: BookService,
+              private dialogService: DialogService) {
   }
 
   ngOnInit(): void {
+
     this.activatedRoute.paramMap.subscribe(paramap => {
       const id = paramap.get('id')
       console.log(id);
@@ -61,6 +65,7 @@ export class BookEditComponent implements OnInit {
 
   deleteBook1(id: any) {
     this.bookService.delete(id).subscribe(() => {
+
       this.router.navigate(["/list"]).then(r => {
         console.log(r);
       });

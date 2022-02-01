@@ -2,6 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {Book} from "../models/book";
 import {BookService} from "../services/book.service";
 import {Router} from "@angular/router";
+import {DialogService} from "../services/dialog.service";
+import {MatDialog} from "@angular/material/dialog";
+import {DialogComponent} from "../dialog/dialog.component";
 
 @Component({
   selector: 'app-book-list',
@@ -12,10 +15,13 @@ export class BookListComponent implements OnInit {
   book!: Book[]
 
   constructor(private bookService: BookService,
-              private router: Router,) {
+              private router: Router,
+              private dialogService: DialogService,
+              public dialog: MatDialog) {
   }
 
   ngOnInit(): void {
+    this.dialogService.openDialog();
     this.bookService.getAll().subscribe(result => {
       this.book = result
       console.log(result)

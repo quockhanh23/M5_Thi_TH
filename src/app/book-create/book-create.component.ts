@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {BookService} from "../services/book.service";
 import {Router} from "@angular/router";
+import {MatDialog} from "@angular/material/dialog";
+import {DialogComponent} from "../dialog/dialog.component";
 
 @Component({
   selector: 'app-book-create',
@@ -20,11 +22,15 @@ export class BookCreateComponent implements OnInit {
     private router: Router,
     private fb: FormBuilder,
     private bookService: BookService,
+    public dialog: MatDialog
   ) {
   }
 
   ngOnInit(): void {
 
+  }
+  openDialog() {
+    this.dialog.open(DialogComponent);
   }
 
   submit() {
