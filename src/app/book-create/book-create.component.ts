@@ -4,6 +4,7 @@ import {BookService} from "../services/book.service";
 import {Router} from "@angular/router";
 import {MatDialog} from "@angular/material/dialog";
 import {DialogComponent} from "../dialog/dialog.component";
+import {DialogInstallComponent} from "../dialog-install/dialog-install.component";
 
 @Component({
   selector: 'app-book-create',
@@ -11,7 +12,7 @@ import {DialogComponent} from "../dialog/dialog.component";
   styleUrls: ['./book-create.component.css']
 })
 export class BookCreateComponent implements OnInit {
-  @Input()
+
   bookForm: FormGroup = this.fb.group({
     id: new FormControl(''),
     title: new FormControl(''),
@@ -31,7 +32,7 @@ export class BookCreateComponent implements OnInit {
 
   }
   openDialog() {
-    this.dialog.open(DialogComponent);
+    this.dialog.open(DialogInstallComponent);
   }
 
   submit() {
