@@ -17,7 +17,6 @@ export class BookListComponent implements OnInit {
   book!: Book[]
 
   constructor(private bookService: BookService,
-              private router: Router,
               public dialog: MatDialog,
   ) {
   }
@@ -31,16 +30,12 @@ export class BookListComponent implements OnInit {
     })
   }
 
-
   deleteBook(id: any) {
-
     this.bookService.delete(id).subscribe(() => {
       this.ngOnInit()
       // @ts-ignore
-      document.getElementById("alo").innerHTML = "Delete successful!"
-      this.bookService.notify2()
+      this.bookService.notify2(document.getElementById("alo").innerHTML = "Delete successful!")
     })
-
   }
 
   countAllBook() {

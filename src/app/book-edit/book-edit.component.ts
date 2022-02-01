@@ -70,7 +70,7 @@ export class BookEditComponent implements OnInit {
         console.log(r);
       });
       // @ts-ignore
-      this.bookService.notify2(this.bookService.notify3( this.bookService.notify1()))
+      this.bookService.notify2(this.bookService.notify3(this.bookService.notify1()))
     }, error => {
       console.log("Lỗi", error)
     })
