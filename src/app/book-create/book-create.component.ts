@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {BookService} from "../services/book.service";
 import {Router} from "@angular/router";
@@ -11,6 +11,7 @@ import {DialogComponent} from "../dialog/dialog.component";
   styleUrls: ['./book-create.component.css']
 })
 export class BookCreateComponent implements OnInit {
+  @Input()
   bookForm: FormGroup = this.fb.group({
     id: new FormControl(''),
     title: new FormControl(''),

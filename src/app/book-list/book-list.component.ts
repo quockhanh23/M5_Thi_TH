@@ -1,10 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Book} from "../models/book";
 import {BookService} from "../services/book.service";
 import {Router} from "@angular/router";
 import {DialogService} from "../services/dialog.service";
 import {MatDialog} from "@angular/material/dialog";
 import {DialogComponent} from "../dialog/dialog.component";
+import {DialogInstallComponent} from "../dialog-install/dialog-install.component";
 
 @Component({
   selector: 'app-book-list',
@@ -12,16 +13,16 @@ import {DialogComponent} from "../dialog/dialog.component";
   styleUrls: ['./book-list.component.css']
 })
 export class BookListComponent implements OnInit {
+
   book!: Book[]
 
   constructor(private bookService: BookService,
               private router: Router,
-              private dialogService: DialogService,
-              public dialog: MatDialog) {
+              public dialog: MatDialog,
+  ) {
   }
 
   ngOnInit(): void {
-    this.dialogService.openDialog();
     this.bookService.getAll().subscribe(result => {
       this.book = result
       console.log(result)
@@ -30,14 +31,15 @@ export class BookListComponent implements OnInit {
     })
   }
 
+
   deleteBook(id: any) {
 
-      this.bookService.delete(id).subscribe(() => {
-        this.ngOnInit()
-        // @ts-ignore
-        document.getElementById("alo").innerHTML = "Delete successful!"
-        this.bookService.notify2()
-      })
+    this.bookService.delete(id).subscribe(() => {
+      this.ngOnInit()
+      // @ts-ignore
+      document.getElementById("alo").innerHTML = "Delete successful!"
+      this.bookService.notify2()
+    })
 
   }
 

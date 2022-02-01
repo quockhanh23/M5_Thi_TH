@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {DialogInstallComponent} from "../dialog-install/dialog-install.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-form-field-appearance-example',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormFieldAppearanceExampleComponent implements OnInit {
   hide = true;
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
 
+  openDialog() {
+    this.dialog.open(DialogInstallComponent);
+  }
 }

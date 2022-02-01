@@ -14,6 +14,7 @@ import {MaterialModule} from "./material/material.module";
 import { BadgeOverviewExampleComponent } from './badge-overview-example/badge-overview-example.component';
 import { FormFieldAppearanceExampleComponent } from './form-field-appearance-example/form-field-appearance-example.component';
 import { DialogComponent } from './dialog/dialog.component';
+import { DialogInstallComponent } from './dialog-install/dialog-install.component';
 
 
 
@@ -27,6 +28,7 @@ import { DialogComponent } from './dialog/dialog.component';
     BadgeOverviewExampleComponent,
     FormFieldAppearanceExampleComponent,
     DialogComponent,
+    DialogInstallComponent,
 
   ],
   imports: [

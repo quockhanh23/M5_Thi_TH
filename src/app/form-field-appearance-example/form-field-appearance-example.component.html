@@ -1,5 +1,5 @@
-<div class="container"style="text-align: center" >
-  <div class="row" >
+<div class="container" style="text-align: center">
+  <div class="row">
     <div class="col-3">
       <h2 style="color: deeppink">Tên đăng nhập</h2>
       <mat-form-field hideRequiredMarker appearance="outline" color="primary">
@@ -22,17 +22,14 @@
     </div>
   </div>
   <div class="row">
-
-   <div class="col-3">
-
-     <h2 style="color: purple">Bạn chưa có tài khoản?</h2>
-   </div>
     <div class="col-3">
-
-      <div class="example-button-row">
-      <button class="btn-primary btn" mat-button color="primary">Đăng nhập</button>
-
+      <h2 style="color: purple">Bạn chưa có tài khoản?</h2>
     </div>
+    <div class="col-3">
+      <div class="example-button-row">
+        <button (click)="openDialog()" class="btn-primary btn" mat-button color="primary">Đăng nhập</button>
+      </div>
     </div>
   </div>
 </div>
+
