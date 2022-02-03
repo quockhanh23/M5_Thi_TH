@@ -15,6 +15,9 @@ import {BadgeOverviewExampleComponent} from './badge-overview-example/badge-over
 import {FormFieldAppearanceExampleComponent} from './form-field-appearance-example/form-field-appearance-example.component';
 import {DialogComponent} from './dialog/dialog.component';
 import {DialogInstallComponent} from './dialog-install/dialog-install.component';
+import { BottomSheetComponent } from './bottom-sheet/bottom-sheet.component';
+import {DialogFailComponent} from "./dialog-fail/dialog-fail.component";
+import { TestComponent } from './test/test.component';
 
 
 @NgModule({
@@ -28,6 +31,9 @@ import {DialogInstallComponent} from './dialog-install/dialog-install.component'
     FormFieldAppearanceExampleComponent,
     DialogComponent,
     DialogInstallComponent,
+    BottomSheetComponent,
+    DialogFailComponent,
+    TestComponent
 
   ],
   imports: [

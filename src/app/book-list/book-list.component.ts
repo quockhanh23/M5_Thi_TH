@@ -6,6 +6,7 @@ import {DialogService} from "../services/dialog.service";
 import {MatDialog} from "@angular/material/dialog";
 import {DialogComponent} from "../dialog/dialog.component";
 import {DialogInstallComponent} from "../dialog-install/dialog-install.component";
+import {DialogFailComponent} from "../dialog-fail/dialog-fail.component";
 
 @Component({
   selector: 'app-book-list',
@@ -19,6 +20,9 @@ export class BookListComponent implements OnInit {
   constructor(private bookService: BookService,
               public dialog: MatDialog,
   ) {
+  }
+  openDialog() {
+    this.dialog.open(DialogFailComponent);
   }
 
   ngOnInit(): void {

@@ -5,6 +5,8 @@ import {Router} from "@angular/router";
 import {MatDialog} from "@angular/material/dialog";
 import {DialogComponent} from "../dialog/dialog.component";
 import {DialogInstallComponent} from "../dialog-install/dialog-install.component";
+import {MatBottomSheet} from "@angular/material/bottom-sheet";
+import {BottomSheetComponent} from "../bottom-sheet/bottom-sheet.component";
 
 @Component({
   selector: 'app-book-create',
@@ -24,8 +26,12 @@ export class BookCreateComponent implements OnInit {
     private router: Router,
     private fb: FormBuilder,
     private bookService: BookService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private _bottomSheet: MatBottomSheet
   ) {
+  }
+  openBottomSheet(): void {
+    this._bottomSheet.open(BottomSheetComponent);
   }
 
   ngOnInit(): void {
@@ -44,6 +50,7 @@ export class BookCreateComponent implements OnInit {
       description: this.bookForm.value.description,
     }
     this.bookService.save(book).subscribe(() => {
+      this.openBottomSheet()
       this.router.navigate(["/list"]);
       this.bookService.notify1()
       this.bookService.notify2()
