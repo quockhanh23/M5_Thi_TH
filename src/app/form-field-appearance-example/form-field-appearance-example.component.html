@@ -1,7 +1,8 @@
 <div class="container" style="text-align: center">
   <div class="row">
     <div class="col-3">
-      <h2 style="color: deeppink">Tên đăng nhập</h2>
+      <h2 style="color: deeppink">
+        <sub><span class="material-icons">account_box</span></sub>&nbsp;Tên đăng nhập</h2>
       <mat-form-field hideRequiredMarker appearance="outline" color="primary">
         <mat-label>Tên đăng nhập</mat-label>
         <input matInput required>
@@ -9,7 +10,8 @@
       </mat-form-field>
     </div>
     <div class="col-3">
-      <h2 style="color: deeppink">Mật khẩu</h2>
+      <h2 style="color: deeppink">
+        <sub><span class="material-icons">https</span></sub>&nbsp;Mật khẩu</h2>
       <mat-form-field appearance="outline">
         <mat-label>Nhập mật khẩu</mat-label>
         <input matInput [type]="hide ? 'password' : 'text'">
@@ -23,13 +25,18 @@
   </div>
   <div class="row">
     <div class="col-3">
-      <h2 class="a" style="color: purple"><a class="a">Bạn chưa có tài khoản?</a></h2>
+      <h2 class="a" style="color: purple"><a class="a"><sub><span class="material-icons">help</span></sub>
+        Bạn chưa có tài khoản?</a></h2>
     </div>
     <div class="col-3">
       <div class="example-button-row">
-        <button (click)="openDialog1(); openDialog()" class="btn-primary btn" mat-button color="primary">Đăng nhập</button>
+        <button mat-raised-button matTooltip="Đăng nhập" (click)="openDialog1(); openDialog(); change()"
+                class="btn-primary btn" mat-button color="primary">
+          <span class="material-icons">touch_app</span>Đăng nhập
+        </button>
       </div>
     </div>
   </div>
 </div>
+<mat-spinner [diameter]="30" *ngIf="loading"></mat-spinner>
 

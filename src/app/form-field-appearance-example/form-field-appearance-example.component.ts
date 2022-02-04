@@ -10,6 +10,7 @@ import {DialogComponent} from "../dialog/dialog.component";
 })
 export class FormFieldAppearanceExampleComponent implements OnInit {
   hide = true;
+  loading = true;
   constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
@@ -20,5 +21,8 @@ export class FormFieldAppearanceExampleComponent implements OnInit {
   }
   openDialog1() {
     this.dialog.open(DialogComponent);
+  }
+  change() {
+    this.loading = false;
   }
 }
