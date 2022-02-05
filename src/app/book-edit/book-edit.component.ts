@@ -3,7 +3,10 @@ import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Book} from "../models/book";
 import {ActivatedRoute, Router} from "@angular/router";
 import {BookService} from "../services/book.service";
-import {DialogService} from "../services/dialog.service";
+import {DialogFailComponent} from "../dialog-fail/dialog-fail.component";
+import {MatDialog} from "@angular/material/dialog";
+import {DialogComponent} from "../dialog/dialog.component";
+
 
 @Component({
   selector: 'app-book-edit',
@@ -24,13 +27,13 @@ export class BookEditComponent implements OnInit {
               private fb: FormBuilder,
               private activatedRoute: ActivatedRoute,
               private bookService: BookService,
-              private dialogService: DialogService) {
+              public dialog: MatDialog,) {
   }
 
   ngOnInit(): void {
 
-    this.activatedRoute.paramMap.subscribe(paramap => {
-      const id = paramap.get('id')
+    this.activatedRoute.paramMap.subscribe(paraMap => {
+      const id = paraMap.get('id')
       console.log(id);
       // @ts-ignore
       this.bookService.getById(id).subscribe(result => {
@@ -47,6 +50,14 @@ export class BookEditComponent implements OnInit {
     })
   }
 
+  openDialog() {
+    this.dialog.open(DialogComponent);
+  }
+
+  openDialog2() {
+    this.dialog.open(DialogFailComponent);
+  }
+
   updateBook() {
     let book = {
       name: this.bookForm.value.name,
@@ -57,7 +68,13 @@ export class BookEditComponent implements OnInit {
     console.log(book);
     // @ts-ignore
     this.bookService.update(this.bookForm.value.id, book).subscribe(() => {
-      this.router.navigate(["/list"]);
+      this.router.navigate(["/list"]).then(success => {
+        console.log('đường dẫn đúng')
+        this.openDialog2()
+      }, error => {
+        console.log('đường dẫn sai')
+      });
+      this.openDialog()
       this.bookService.notify1()
       this.bookService.notify2()
     })
@@ -65,9 +82,8 @@ export class BookEditComponent implements OnInit {
 
   deleteBook1(id: any) {
     this.bookService.delete(id).subscribe(() => {
-
       this.router.navigate(["/list"]).then(r => {
-        console.log(r);
+        console.log('đường dẫn đúng');
       });
       // @ts-ignore
       this.bookService.notify2(this.bookService.notify3(this.bookService.notify1()))
