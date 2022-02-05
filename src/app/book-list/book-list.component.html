@@ -10,10 +10,14 @@
     <h4>{{pe.title}}</h4>
     <h4>{{pe.author}}</h4>
     <h4>{{pe.description}}</h4>
-    <h4><a [routerLink]="['/detail', pe.id]">Detail</a></h4>
-    <button class="btn-warning btn"><a style="text-decoration: none" [routerLink]="['/edit', pe.id]">Edit</a></button>
+    <h4><a [routerLink]="['/detail', pe.id]"><sub><span style="font-size: 16px" class="material-icons">feed</span></sub>&ensp;Detail</a></h4>
+    <button class="btn-warning btn"><a style="text-decoration: none" [routerLink]="['/edit', pe.id]">
+      <sub><span style="font-size: 15px" class="material-icons">border_color</span></sub>&ensp;Edit</a></button>
+
+
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">Delete
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
+      <sub><span style="font-size: 16px" class="material-icons">delete</span></sub>&ensp;Delete
     </button>
     <!-- Modal -->
     <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"

@@ -7,13 +7,13 @@ import {DialogFailComponent} from "../dialog-fail/dialog-fail.component";
 import {MatDialog} from "@angular/material/dialog";
 import {DialogComponent} from "../dialog/dialog.component";
 
-
 @Component({
   selector: 'app-book-edit',
   templateUrl: './book-edit.component.html',
   styleUrls: ['./book-edit.component.css']
 })
 export class BookEditComponent implements OnInit {
+  loading = true;
   @Input()
   book!: Book
   bookForm: FormGroup = new FormGroup({
@@ -56,6 +56,15 @@ export class BookEditComponent implements OnInit {
 
   openDialog2() {
     this.dialog.open(DialogFailComponent);
+    this.closeAllDialog()
+  }
+  closeAllDialog() {
+    setTimeout(() => {
+      this.dialog.closeAll()
+    }, 7000)
+  }
+  change() {
+    this.loading = false;
   }
 
   updateBook() {
@@ -69,10 +78,10 @@ export class BookEditComponent implements OnInit {
     // @ts-ignore
     this.bookService.update(this.bookForm.value.id, book).subscribe(() => {
       this.router.navigate(["/list"]).then(success => {
-        console.log('đường dẫn đúng')
+        console.log('đường dẫn đúng', success)
         this.openDialog2()
       }, error => {
-        console.log('đường dẫn sai')
+        console.log('đường dẫn sai', error)
       });
       this.openDialog()
       this.bookService.notify1()
@@ -83,7 +92,7 @@ export class BookEditComponent implements OnInit {
   deleteBook1(id: any) {
     this.bookService.delete(id).subscribe(() => {
       this.router.navigate(["/list"]).then(r => {
-        console.log('đường dẫn đúng');
+        console.log('đường dẫn đúng', r);
       });
       // @ts-ignore
       this.bookService.notify2(this.bookService.notify3(this.bookService.notify1()))
